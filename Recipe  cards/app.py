@@ -37,11 +37,11 @@ recipe = {
     "name": "Classic Spaghetti Carbonara",
     "image_url": "https://images.unsplash.com/photo-1612874742237-6526221588e3?w=800",
     "ingredients": [
-        "200g spaghetti",
-        "100g pancetta, diced",
-        "2 large eggs",
-        "50g pecorino cheese, grated",
-        "Freshly cracked black pepper",
+        {"quantity": "200g", "name": "spaghetti"},
+        {"quantity": "100g", "name": "pancetta, diced"},
+        {"quantity": "2", "name": "large eggs"},
+        {"quantity": "50g", "name": "pecorino cheese, grated"},
+        {"quantity": "to taste", "name": "freshly cracked black pepper"},
     ],
     "directions": [
         "Bring a large pot of salted water to a boil and cook the spaghetti until al dente.",

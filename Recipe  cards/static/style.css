@@ -83,3 +83,18 @@ body {
 .card__directions li {
     padding-left: 4px;
 }
+
+.ingredient-row {
+    display: flex;
+    gap: 12px;
+}
+
+.ingredient-qty {
+    flex: 0 0 80px;      /* fixed width column */
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.ingredient-name {
+    flex: 1;
+}

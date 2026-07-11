@@ -31,14 +31,11 @@
             <section>
                 <h2 class="card__section-heading">Ingredients</h2>
                 <ul class="card__ingredients">
-                    <!--
-                      The for-loop tag below works just like a Python
-                      for-loop. It iterates over the ingredients list
-                      and repeats everything between "for" and
-                      "endfor" once per item.
-                    -->
                     {% for ingredient in recipe.ingredients %}
-                        <li>{{ ingredient }}</li>
+                        <li class="ingredient-row">
+                            <span class="ingredient-qty">{{ ingredient.quantity }}</span>
+                            <span class="ingredient-name">{{ ingredient.name }}</span>
+                        </li>
                     {% endfor %}
                 </ul>
             </section>
