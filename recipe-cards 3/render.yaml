@@ -1,0 +1,19 @@
+# Render Blueprint — https://render.com/docs/blueprint-spec
+#
+# One worker on purpose: SQLite is a single file, and several worker
+# processes writing to it invites "database is locked". Threads give the
+# concurrency instead, which is plenty for a demo.
+services:
+  - type: web
+    name: recipe-cards
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app --workers 1 --threads 4 --timeout 60
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.6"
+      - key: SECRET_KEY
+        generateValue: true      # Render creates a random value and keeps it
+      - key: DATABASE_PATH
+        value: /tmp/recipes.db   # /tmp is writable on Render; resets on restart

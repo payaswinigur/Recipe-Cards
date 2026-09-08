@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}{{ recipe.name }} — Recipe Cards{% endblock %}
+
+{% block content %}
+  <p class="backlink"><a href="{{ url_for('index') }}">&larr; All recipes</a></p>
+
+  <article class="card">
+    {% if recipe.image_url %}
+      <img class="card__image" src="{{ recipe.image_url }}" alt="{{ recipe.name }}">
+    {% endif %}
+
+    <div class="card__body">
+      <h1 class="card__title">{{ recipe.name }}</h1>
+      {% if recipe.servings %}
+        <p class="card__meta">{{ recipe.servings }}</p>
+      {% endif %}
+
+      <section>
+        <h2 class="card__section-heading">Ingredients</h2>
+        <ul class="card__ingredients">
+          {% for ingredient in ingredients %}
+            <li class="ingredient-row">
+              <span class="ingredient-qty">{{ ingredient.quantity }}</span>
+              <span class="ingredient-name">{{ ingredient.name }}</span>
+            </li>
+          {% endfor %}
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="card__section-heading">Directions</h2>
+        <ol class="card__directions">
+          {% for step in directions %}
+            <li>{{ step.instruction }}</li>
+          {% endfor %}
+        </ol>
+      </section>
+
+      <div class="card__actions">
+        <a class="btn" href="{{ url_for('edit', recipe_id=recipe.id) }}">Edit</a>
+        <form method="post" action="{{ url_for('delete', recipe_id=recipe.id) }}"
+              onsubmit="return confirm('Delete “{{ recipe.name }}” for good?');">
+          <button class="btn btn--danger" type="submit">Delete</button>
+        </form>
+      </div>
+    </div>
+  </article>
+{% endblock %}
