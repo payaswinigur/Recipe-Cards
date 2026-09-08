@@ -4,23 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ recipe.name }}</title>
-    <!--
-      url_for('static', filename='style.css') builds the correct URL to
-      our CSS file. You could hardcode "/static/style.css" instead, but
-      url_for exists so that if your app's folder structure or hosting
-      path ever changes, links don't silently break.
+    
     -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
-    <!--
-      This is Jinja2, Flask's templating language. Double curly braces
-      mark an expression that gets evaluated and inserted as text.
-      Curly-brace-percent tags mark a control structure (loops, ifs) —
-      like writing Python logic directly inside HTML.
-
-      `recipe` here is the exact same dict we passed in from app.py.
     -->
     <div class="card">
         <img class="card__image" src="{{ recipe.image_url }}" alt="{{ recipe.name }}">
